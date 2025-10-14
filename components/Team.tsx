@@ -18,7 +18,7 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-20 bg-slate-900/50">
+    <section id="team" className="py-20 bg-gray-100 dark:bg-slate-900/50 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           {t.team.title}

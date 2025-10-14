@@ -91,7 +91,7 @@ export default function PresalePanel() {
   };
 
   return (
-    <section id="presale" className="py-20 bg-slate-900/50">
+    <section id="presale" className="py-20 bg-gray-100 dark:bg-slate-900/50 transition-colors">
       <Toaster position="top-right" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -102,8 +102,8 @@ export default function PresalePanel() {
           {!account ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">🔐</div>
-              <h3 className="text-2xl font-bold mb-4">{t.presale.connectTitle}</h3>
-              <p className="text-slate-400 mb-6">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t.presale.connectTitle}</h3>
+              <p className="text-gray-600 dark:text-slate-400 mb-6">
                 {t.presale.connectText}
               </p>
               <button onClick={connect} className="btn-accent">
@@ -113,8 +113,8 @@ export default function PresalePanel() {
           ) : !isCorrectNetwork ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">⚠️</div>
-              <h3 className="text-2xl font-bold mb-4">{t.presale.wrongNetworkTitle}</h3>
-              <p className="text-slate-400 mb-6">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t.presale.wrongNetworkTitle}</h3>
+              <p className="text-gray-600 dark:text-slate-400 mb-6">
                 {t.presale.wrongNetworkText} {network.name}
               </p>
               <button 
@@ -152,8 +152,8 @@ export default function PresalePanel() {
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between text-sm mb-2">
-                  <label className="font-semibold">{t.presale.amount}</label>
-                  <span className="text-slate-400">{t.presale.balance}: {parseFloat(balance).toFixed(4)} BNB</span>
+                  <label className="font-semibold text-gray-900 dark:text-white">{t.presale.amount}</label>
+                  <span className="text-gray-600 dark:text-slate-400">{t.presale.balance}: {parseFloat(balance).toFixed(4)} BNB</span>
                 </div>
                 <div className="relative">
                   <input
@@ -174,12 +174,12 @@ export default function PresalePanel() {
                 </div>
               </div>
 
-              <div className="bg-slate-900 border border-slate-700 rounded-lg p-4">
+              <div className="bg-gray-100 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-4 transition-colors">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-slate-400">{t.presale.youReceive}</span>
+                  <span className="text-gray-600 dark:text-slate-400">{t.presale.youReceive}</span>
                   <span className="font-semibold text-lg text-accent">{calculateTokens()} Tokens</span>
                 </div>
-                <div className="text-xs text-slate-500">
+                <div className="text-xs text-gray-500 dark:text-slate-500">
                   {t.presale.rate}: 1 BNB = {tokenPrice !== '0' ? (1 / parseFloat(tokenPrice)).toFixed(2) : '...'} Tokens
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function PresalePanel() {
                 {loading ? t.presale.processing : t.presale.buy}
               </button>
 
-              <div className="text-xs text-slate-400 text-center">
+              <div className="text-xs text-gray-600 dark:text-slate-400 text-center">
                 {t.presale.terms}
               </div>
             </div>

@@ -10,6 +10,8 @@ export const translations = {
       connectWallet: 'Connect Wallet',
       disconnect: 'Disconnect',
       wrongNetwork: 'Wrong Network',
+      darkMode: 'Dark Mode',
+      lightMode: 'Light Mode',
     },
     hero: {
       title: 'TOKEN PRESALE',
@@ -114,6 +116,8 @@ export const translations = {
       connectWallet: 'ربط المحفظة',
       disconnect: 'قطع الاتصال',
       wrongNetwork: 'شبكة خاطئة',
+      darkMode: 'الوضع الليلي',
+      lightMode: 'الوضع النهاري',
     },
     hero: {
       title: 'البيع المسبق للعملة',

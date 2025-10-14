@@ -14,7 +14,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-slate-900/50">
+    <section id="about" className="py-20 bg-gray-100 dark:bg-slate-900/50 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           {t.about.title}
@@ -23,10 +23,10 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="card">
             <h3 className="text-2xl font-bold mb-4 text-accent">{t.about.overview}</h3>
-            <p className="text-slate-300 leading-relaxed mb-4">
+            <p className="text-gray-700 dark:text-slate-300 leading-relaxed mb-4">
               {t.about.overviewText1}
             </p>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="text-gray-700 dark:text-slate-300 leading-relaxed">
               {t.about.overviewText2}
             </p>
           </div>

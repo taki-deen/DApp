@@ -35,13 +35,13 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="pt-24 pb-16 min-h-screen flex items-center">
+    <section id="home" className="pt-24 pb-16 min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white dark:from-dark dark:to-slate-900 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary via-purple-500 to-accent bg-clip-text text-transparent">
             {t.hero.title}
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-slate-300 mb-8">
             {t.hero.subtitle}
           </p>
           

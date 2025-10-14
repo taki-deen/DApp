@@ -7,7 +7,7 @@ export default function Tokenomics() {
   const { t } = useLanguage();
 
   return (
-    <section id="tokenomics" className="py-20">
+    <section id="tokenomics" className="py-20 bg-white dark:bg-dark transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           {t.tokenomics.title}
@@ -16,7 +16,7 @@ export default function Tokenomics() {
         {loading ? (
           <div className="text-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-accent mx-auto"></div>
-            <p className="mt-4 text-slate-400">{t.tokenomics.loading}</p>
+            <p className="mt-4 text-gray-600 dark:text-slate-400">{t.tokenomics.loading}</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-8 items-center">

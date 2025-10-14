@@ -15,7 +15,7 @@ export default function Roadmap() {
   const { t } = useLanguage();
 
   return (
-    <section id="roadmap" className="py-20">
+    <section id="roadmap" className="py-20 bg-white dark:bg-dark transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           {t.roadmap.title}
