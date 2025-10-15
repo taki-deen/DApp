@@ -30,7 +30,7 @@
 }
 
 .statCard {
-  @apply card text-center;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors text-center;
 }
 
 .statLabel {
@@ -58,7 +58,7 @@
 }
 
 .progressCard {
-  @apply card;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors;
 }
 
 .progressHeader {

@@ -29,11 +29,11 @@
 }
 
 .chartContainer {
-  @apply card h-96;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors h-96;
 }
 
 .distributionCard {
-  @apply card;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors;
 }
 
 .distributionTitle {

@@ -1,8 +1,8 @@
 /* ThemeSwitcher Component Styles */
 .themeButton {
   @apply p-2 rounded-lg transition-all;
-  @apply bg-slate-800 dark:bg-slate-800 light:bg-gray-200;
-  @apply hover:bg-slate-700 dark:hover:bg-slate-700 light:hover:bg-gray-300;
+  @apply bg-gray-200 dark:bg-slate-800;
+  @apply hover:bg-gray-300 dark:hover:bg-slate-700;
 }
 
 .themeIcon {

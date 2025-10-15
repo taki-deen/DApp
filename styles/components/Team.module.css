@@ -18,7 +18,7 @@
 }
 
 .memberCard {
-  @apply card text-center hover:border-primary transition-all;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors text-center hover:border-primary;
 }
 
 .memberAvatar {
@@ -46,7 +46,7 @@
 }
 
 .socialCard {
-  @apply card hover:border-accent transition-all min-w-[120px] text-center;
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors hover:border-accent min-w-[120px] text-center;
 }
 
 .socialIcon {
