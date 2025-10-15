@@ -2,47 +2,48 @@
 
 Modern React/Next.js presale landing page for BSC tokens with Web3 integration and multi-language support.
 
+## 🚀 Quick Start
+
+**For detailed setup instructions, see:**
+- 📖 **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Complete setup guide for all platforms
+- ⚡ **[QUICK_START.md](./QUICK_START.md)** - Get running in 5 minutes
+- 🌍 **[GUIDE_AR.md](./GUIDE_AR.md)** - Arabic guide
+
 ## Features ✨
 
 - 🌐 **Dual Language Support** (English/Arabic with RTL)
+- 🌓 **Dark/Light Theme** with smooth transitions
 - 🔗 **Web3 Wallet Integration** (MetaMask, WalletConnect)
 - 📊 **Live Contract Data** (price, tokens sold, countdown)
 - 💰 **Secure Buy Flow** with real-time validation
 - 📱 **Mobile-First Responsive Design**
 - ⚡ **Fast Performance** with Next.js
 - 🎨 **Modern UI** with Tailwind CSS
+- 🎯 **Modular Architecture** with CSS modules
 
-## Setup 🛠️
-
-### 1. Install Dependencies
+## 🚀 Quick Setup
 
 ```bash
+# 1. Clone repository
+git clone https://github.com/taki-deen/DApp.git
+cd DApp
+
+# 2. Install dependencies
 npm install
-```
 
-### 2. Environment Variables
+# 3. Create environment file
+echo "NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS=0x1234567890123456789012345678901234567890" > .env.local
+echo "NEXT_PUBLIC_NETWORK=bsc-testnet" >> .env.local
+echo "NEXT_PUBLIC_RPC_URL=https://data-seed-prebsc-1-s1.binance.org:8545/" >> .env.local
+echo "NEXT_PUBLIC_CHAIN_ID=97" >> .env.local
 
-Create `.env.local`:
-
-```env
-NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS=0xYourContractAddress
-NEXT_PUBLIC_NETWORK=bsc-testnet
-NEXT_PUBLIC_RPC_URL=https://data-seed-prebsc-1-s1.binance.org:8545/
-NEXT_PUBLIC_CHAIN_ID=97
-```
-
-**For BSC Mainnet:**
-- `NEXT_PUBLIC_NETWORK=bsc-mainnet`
-- `NEXT_PUBLIC_CHAIN_ID=56`
-- `NEXT_PUBLIC_RPC_URL=https://bsc-dataseed.binance.org/`
-
-### 3. Run Development Server
-
-```bash
+# 4. Start development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+**📖 For detailed setup instructions on different platforms, see [SETUP_GUIDE.md](./SETUP_GUIDE.md)**
 
 ## Language System 🌍
 
