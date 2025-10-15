@@ -21,7 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
         <Header />
         <NetworkSwitcher />
         <ContractWarning />

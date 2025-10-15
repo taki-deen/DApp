@@ -1,8 +1,18 @@
 /* Header Component Styles */
 .header {
-  @apply fixed w-full top-0 z-50 backdrop-blur-sm border-b transition-all duration-300;
-  @apply bg-white/95 dark:bg-slate-900/95;
-  @apply border-gray-200 dark:border-slate-700;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgb(229 231 235);
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.dark .header {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-bottom-color: rgb(51 65 85);
 }
 
 .nav {
@@ -22,7 +32,21 @@
 }
 
 .navLink {
-  @apply text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors duration-200 font-medium;
+  color: rgb(55 65 81);
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  color: rgb(147 51 234);
+}
+
+.dark .navLink {
+  color: rgb(209 213 219);
+}
+
+.dark .navLink:hover {
+  color: rgb(250 204 21);
 }
 
 .controls {
@@ -34,31 +58,103 @@
 }
 
 .networkStatus {
-  @apply text-xs text-green-600 dark:text-green-400 font-semibold;
+  font-size: 0.75rem;
+  color: rgb(34 197 94);
+  font-weight: 600;
+}
+
+.dark .networkStatus {
+  color: rgb(74 222 128);
 }
 
 .account {
-  @apply font-mono text-gray-900 dark:text-white;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  color: rgb(17 24 39);
+}
+
+.dark .account {
+  color: rgb(255 255 255);
 }
 
 .balance {
-  @apply text-xs text-yellow-600 dark:text-yellow-400 font-semibold;
+  font-size: 0.75rem;
+  color: rgb(217 119 6);
+  font-weight: 600;
+}
+
+.dark .balance {
+  color: rgb(251 191 36);
 }
 
 .mobileMenuButton {
-  @apply md:hidden p-2 rounded-lg transition-colors duration-200;
-  @apply text-gray-700 dark:text-gray-300;
-  @apply hover:bg-gray-100 dark:hover:bg-slate-800;
+  display: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  color: rgb(55 65 81);
+}
+
+.mobileMenuButton:hover {
+  background-color: rgb(243 244 246);
+}
+
+.dark .mobileMenuButton {
+  color: rgb(209 213 219);
+}
+
+.dark .mobileMenuButton:hover {
+  background-color: rgb(30 41 59);
+}
+
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: block;
+  }
 }
 
 .mobileMenu {
-  @apply md:hidden py-4 space-y-2 border-t border-gray-200 dark:border-slate-700;
-  @apply bg-white dark:bg-slate-900;
+  display: none;
+  padding: 1rem 0;
+  border-top: 1px solid rgb(229 231 235);
+  background-color: rgb(255 255 255);
+}
+
+.dark .mobileMenu {
+  border-top-color: rgb(51 65 85);
+  background-color: rgb(15 23 42);
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    display: block;
+  }
 }
 
 .mobileMenuLink {
-  @apply block w-full text-left rtl:text-right py-3 px-4 rounded-lg transition-colors duration-200;
-  @apply text-gray-700 dark:text-gray-300;
-  @apply hover:text-purple-600 dark:hover:text-yellow-400;
-  @apply hover:bg-gray-50 dark:hover:bg-slate-800;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  color: rgb(55 65 81);
 }
+
+.mobileMenuLink:hover {
+  color: rgb(147 51 234);
+  background-color: rgb(249 250 251);
+}
+
+.dark .mobileMenuLink {
+  color: rgb(209 213 219);
+}
+
+.dark .mobileMenuLink:hover {
+  color: rgb(250 204 21);
+  background-color: rgb(30 41 59);
+}
+
+[dir="rtl"] .mobileMenuLink {
+  text-align: right;
+}
+
