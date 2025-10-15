@@ -33,5 +33,5 @@ export const getNetwork = () => {
   return network === 'bsc-mainnet' ? BSC_MAINNET : BSC_TESTNET;
 };
 
-export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS || '';
+export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS;
 

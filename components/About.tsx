@@ -8,10 +8,20 @@ export default function About() {
   const [copied, setCopied] = useState(false);
 
   const copyAddress = () => {
-    navigator.clipboard.writeText(CONTRACT_ADDRESS);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (CONTRACT_ADDRESS) {
+      navigator.clipboard.writeText(CONTRACT_ADDRESS);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
+
+  const displayAddress = CONTRACT_ADDRESS
+    ? `${CONTRACT_ADDRESS.slice(0, 10)}...${CONTRACT_ADDRESS.slice(-8)}`
+    : 'Address not set';
+
+  const explorerLink = CONTRACT_ADDRESS
+    ? `${network.explorer}/address/${CONTRACT_ADDRESS}`
+    : '#';
 
   return (
     <section id="about" className="py-20 bg-gray-100 dark:bg-slate-900/50 transition-colors">
@@ -45,18 +55,22 @@ export default function About() {
               <div className="flex justify-between py-2 border-b border-slate-700">
                 <span className="text-slate-400">{t.about.contractAddress}:</span>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs">{CONTRACT_ADDRESS.slice(0, 10)}...{CONTRACT_ADDRESS.slice(-8)}</span>
-                  <button onClick={copyAddress} className="text-accent hover:text-yellow-400">
+                  <span className="font-mono text-xs">{displayAddress}</span>
+                  <button
+                    onClick={copyAddress}
+                    className={`text-accent hover:text-yellow-400 ${!CONTRACT_ADDRESS ? 'cursor-not-allowed opacity-50' : ''}`}
+                    disabled={!CONTRACT_ADDRESS}
+                  >
                     {copied ? '✓' : '📋'}
                   </button>
                 </div>
               </div>
               <div className="pt-2">
                 <a 
-                  href={`${network.explorer}/address/${CONTRACT_ADDRESS}`}
+                  href={explorerLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-purple-400 underline"
+                  className={`text-primary hover:text-purple-400 underline ${!CONTRACT_ADDRESS ? 'pointer-events-none opacity-50' : ''}`}
                 >
                   {t.about.viewOnExplorer} {network.name === 'BSC Mainnet' ? 'BscScan' : 'BSC Testnet Explorer'}
                 </a>
