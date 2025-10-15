@@ -21,7 +21,7 @@ export default function Header() {
         <div className={styles.navContainer}>
           <div className="flex items-center">
             <div className={styles.logo}>
-              TokenPresale
+              🚀 TokenPresale
             </div>
           </div>
 
@@ -42,17 +42,27 @@ export default function Header() {
               <div className="flex items-center gap-2">
                 <div className={styles.walletInfo}>
                   <div className={styles.networkStatus}>
-                    {isCorrectNetwork ? 'BSC' : `⚠️ ${t.header.wrongNetwork}`}
+                    {isCorrectNetwork ? (
+                      <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                        BSC
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-1 text-red-500">
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        {t.header.wrongNetwork}
+                      </span>
+                    )}
                   </div>
                   <div className={styles.account}>{account.slice(0, 6)}...{account.slice(-4)}</div>
                   <div className={styles.balance}>{parseFloat(balance).toFixed(4)} BNB</div>
                 </div>
-                <button onClick={disconnect} className="btn-primary text-sm">
+                <button onClick={disconnect} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
                   {t.header.disconnect}
                 </button>
               </div>
             ) : (
-              <button onClick={connect} className="btn-primary">
+              <button onClick={connect} className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl">
                 {t.header.connectWallet}
               </button>
             )}

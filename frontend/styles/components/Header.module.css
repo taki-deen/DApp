@@ -1,8 +1,8 @@
 /* Header Component Styles */
 .header {
-  @apply fixed w-full top-0 z-50 backdrop-blur-sm border-b transition-colors;
-  @apply bg-white/95 dark:bg-dark/95;
-  @apply border-gray-200 dark:border-slate-800;
+  @apply fixed w-full top-0 z-50 backdrop-blur-sm border-b transition-all duration-300;
+  @apply bg-white/95 dark:bg-slate-900/95;
+  @apply border-gray-200 dark:border-slate-700;
 }
 
 .nav {
@@ -14,7 +14,7 @@
 }
 
 .logo {
-  @apply text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  @apply text-2xl font-bold bg-gradient-to-r from-purple-600 to-yellow-500 bg-clip-text text-transparent;
 }
 
 .navLinks {
@@ -22,7 +22,7 @@
 }
 
 .navLink {
-  @apply text-gray-700 dark:text-white hover:text-accent transition;
+  @apply text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-yellow-400 transition-colors duration-200 font-medium;
 }
 
 .controls {
@@ -34,25 +34,31 @@
 }
 
 .networkStatus {
-  @apply text-xs text-slate-400;
+  @apply text-xs text-green-600 dark:text-green-400 font-semibold;
 }
 
 .account {
-  @apply font-mono;
+  @apply font-mono text-gray-900 dark:text-white;
 }
 
 .balance {
-  @apply text-xs text-accent;
+  @apply text-xs text-yellow-600 dark:text-yellow-400 font-semibold;
 }
 
 .mobileMenuButton {
-  @apply md:hidden text-white;
+  @apply md:hidden p-2 rounded-lg transition-colors duration-200;
+  @apply text-gray-700 dark:text-gray-300;
+  @apply hover:bg-gray-100 dark:hover:bg-slate-800;
 }
 
 .mobileMenu {
-  @apply md:hidden py-4 space-y-2;
+  @apply md:hidden py-4 space-y-2 border-t border-gray-200 dark:border-slate-700;
+  @apply bg-white dark:bg-slate-900;
 }
 
 .mobileMenuLink {
-  @apply block w-full text-left rtl:text-right py-2 hover:text-accent;
+  @apply block w-full text-left rtl:text-right py-3 px-4 rounded-lg transition-colors duration-200;
+  @apply text-gray-700 dark:text-gray-300;
+  @apply hover:text-purple-600 dark:hover:text-yellow-400;
+  @apply hover:bg-gray-50 dark:hover:bg-slate-800;
 }
