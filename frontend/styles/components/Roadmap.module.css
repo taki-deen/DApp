@@ -4,7 +4,7 @@
 }
 
 .container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply w-full px-4 sm:px-6 lg:px-8;
 }
 
 .title {
@@ -13,7 +13,7 @@
 }
 
 .timelineContainer {
-  @apply max-w-4xl mx-auto;
+  @apply w-full;
 }
 
 .timeline {
