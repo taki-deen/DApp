@@ -1,31 +1,23 @@
 {
-  "name": "crypto-presale-landing",
+  "name": "crypto-presale-dapp",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "14.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "ethers": "^6.9.0",
-    "@web3modal/ethers": "^3.5.0",
-    "react-query": "^3.39.3",
-    "recharts": "^2.10.3",
-    "react-hot-toast": "^2.4.1"
+    "frontend:install": "cd frontend && npm install",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:start": "cd frontend && npm run start",
+    "contracts:install": "cd smart-contracts && npm install",
+    "contracts:compile": "cd smart-contracts && npm run compile",
+    "contracts:test": "cd smart-contracts && npm run test",
+    "contracts:deploy": "cd smart-contracts && npm run deploy",
+    "contracts:deploy:testnet": "cd smart-contracts && npm run deploy:testnet",
+    "install:all": "npm run contracts:install && npm run frontend:install",
+    "dev": "npm run frontend:dev",
+    "build": "npm run contracts:compile && npm run frontend:build",
+    "test": "npm run contracts:test"
   },
   "devDependencies": {
-    "@types/node": "20.10.5",
-    "@types/react": "18.2.45",
-    "@types/react-dom": "18.2.18",
-    "typescript": "5.3.3",
-    "tailwindcss": "3.4.0",
-    "postcss": "8.4.32",
-    "autoprefixer": "10.4.16"
+    "concurrently": "^8.2.2"
   }
 }
-

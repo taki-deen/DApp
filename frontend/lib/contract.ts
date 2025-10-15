@@ -33,5 +33,10 @@ export const getNetwork = () => {
   return network === 'bsc-mainnet' ? BSC_MAINNET : BSC_TESTNET;
 };
 
-export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS || '';
+export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS || '0x1234567890123456789012345678901234567890';
+
+// Check if contract address is valid
+export const isValidContractAddress = (address: string) => {
+  return address && address !== '' && address !== '0x1234567890123456789012345678901234567890' && address.length === 42;
+};
 

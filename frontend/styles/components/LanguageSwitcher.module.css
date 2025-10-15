@@ -1,6 +1,6 @@
 /* LanguageSwitcher Component Styles */
 .languageContainer {
-  @apply flex items-center gap-2 bg-gray-200 dark:bg-slate-800 rounded-lg p-1;
+  @apply flex items-center gap-2 bg-slate-800 rounded-lg p-1;
 }
 
 .languageButton {

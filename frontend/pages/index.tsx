@@ -9,6 +9,7 @@ import Team from '@/components/Team';
 import Footer from '@/components/Footer';
 import WalletStatus from '@/components/WalletStatus';
 import NetworkSwitcher from '@/components/NetworkSwitcher';
+import ContractWarning from '@/components/ContractWarning';
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <div className="min-h-screen">
         <Header />
         <NetworkSwitcher />
+        <ContractWarning />
         <main>
           <Hero />
           <About />

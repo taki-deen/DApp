@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { BrowserProvider, Contract, formatEther, parseEther } from 'ethers';
-import { PRESALE_ABI, CONTRACT_ADDRESS, getNetwork } from '@/lib/contract';
+import { PRESALE_ABI, CONTRACT_ADDRESS, getNetwork, isValidContractAddress } from '@/lib/contract';
 
 interface Web3ContextType {
   account: string | null;
@@ -42,6 +42,12 @@ export const Web3Provider = ({ children }: { children: ReactNode }) => {
     if (!window.ethereum) {
       alert('يرجى تثبيت MetaMask!\n\nالرجاء:\n1. تثبيت إضافة MetaMask\n2. إعادة تحميل الصفحة (F5)\n3. المحاولة مرة أخرى');
       window.open('https://metamask.io/download/', '_blank');
+      return;
+    }
+
+    // Check if contract address is valid
+    if (!isValidContractAddress(CONTRACT_ADDRESS)) {
+      alert('عنوان العقد غير صحيح!\n\nيرجى تحديث ملف .env.local بعنوان عقد صحيح');
       return;
     }
 
