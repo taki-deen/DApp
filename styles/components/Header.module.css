@@ -1,0 +1,58 @@
+/* Header Component Styles */
+.header {
+  @apply fixed w-full top-0 z-50 backdrop-blur-sm border-b transition-colors;
+  @apply bg-white/95 dark:bg-dark/95;
+  @apply border-gray-200 dark:border-slate-800;
+}
+
+.nav {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.navContainer {
+  @apply flex justify-between items-center h-16;
+}
+
+.logo {
+  @apply text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+}
+
+.navLinks {
+  @apply hidden md:flex space-x-8 rtl:space-x-reverse;
+}
+
+.navLink {
+  @apply text-gray-700 dark:text-white hover:text-accent transition;
+}
+
+.controls {
+  @apply flex items-center gap-3;
+}
+
+.walletInfo {
+  @apply hidden sm:flex flex-col items-end text-sm;
+}
+
+.networkStatus {
+  @apply text-xs text-slate-400;
+}
+
+.account {
+  @apply font-mono;
+}
+
+.balance {
+  @apply text-xs text-accent;
+}
+
+.mobileMenuButton {
+  @apply md:hidden text-white;
+}
+
+.mobileMenu {
+  @apply md:hidden py-4 space-y-2;
+}
+
+.mobileMenuLink {
+  @apply block w-full text-left rtl:text-right py-2 hover:text-accent;
+}

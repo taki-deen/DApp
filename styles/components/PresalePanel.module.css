@@ -1,0 +1,110 @@
+/* PresalePanel Component Styles */
+.presale {
+  @apply py-20 transition-colors;
+  @apply bg-gray-100 dark:bg-slate-900/50;
+}
+
+.container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.title {
+  @apply text-4xl md:text-5xl font-bold text-center mb-12;
+  @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+}
+
+.mainCard {
+  @apply card max-w-2xl mx-auto;
+}
+
+.connectSection {
+  @apply text-center py-12;
+}
+
+.connectIcon {
+  @apply text-6xl mb-4;
+}
+
+.connectTitle {
+  @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white;
+}
+
+.connectText {
+  @apply text-gray-600 dark:text-slate-400 mb-6;
+}
+
+.networkSection {
+  @apply text-center py-12;
+}
+
+.networkIcon {
+  @apply text-6xl mb-4;
+}
+
+.networkTitle {
+  @apply text-2xl font-bold mb-4 text-gray-900 dark:text-white;
+}
+
+.networkText {
+  @apply text-gray-600 dark:text-slate-400 mb-6;
+}
+
+.buySection {
+  @apply space-y-6;
+}
+
+.amountInput {
+  @apply space-y-2;
+}
+
+.inputLabel {
+  @apply flex justify-between text-sm mb-2;
+}
+
+.inputLabelText {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.balanceText {
+  @apply text-gray-600 dark:text-slate-400;
+}
+
+.inputContainer {
+  @apply relative;
+}
+
+.inputField {
+  @apply input-field pr-20;
+}
+
+.maxButton {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 text-accent hover:text-yellow-400 font-semibold text-sm;
+}
+
+.previewCard {
+  @apply bg-gray-100 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-4 transition-colors;
+}
+
+.previewHeader {
+  @apply flex justify-between text-sm mb-2;
+}
+
+.previewLabel {
+  @apply text-gray-600 dark:text-slate-400;
+}
+
+.previewValue {
+  @apply font-semibold text-lg text-accent;
+}
+
+.previewRate {
+  @apply text-xs text-gray-500 dark:text-slate-500;
+}
+
+.buyButton {
+  @apply w-full btn-accent text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.termsText {
+  @apply text-xs text-gray-600 dark:text-slate-400 text-center;
+}
