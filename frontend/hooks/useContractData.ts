@@ -1,47 +1,33 @@
 import { useState, useEffect } from 'react';
-import { useWeb3 } from '@/contexts/Web3Context';
+
+// ✅ بيانات تجريبية ثابتة
+const MOCK_DATA = {
+  tokenPrice: "0.0005",
+  tokensSold: "450000", 
+  tokensAvailable: "550000",
+  endTime: (Math.floor(Date.now() / 1000) + 86400 * 5).toString(),
+};
 
 export const useContractData = () => {
-  const { contract, account } = useWeb3();
-  const [tokenPrice, setTokenPrice] = useState('');
-  const [tokensSold, setTokensSold] = useState('');
-  const [totalTokens, setTotalTokens] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // ابدأ بـ true
-
-  // ✅ بيانات تجريبية آمنة للـ SSR
-  const mockData = {
-    tokenPrice: "0.0005",
-    tokensSold: "450000", 
-    totalTokens: "1000000",
-    endTime: (Math.floor(Date.now() / 1000) + 86400 * 5).toString(),
-  };
-
-  const fetchContractData = async () => {
-    // استخدم البيانات التجريبية دائماً للاختبار
-    setTokenPrice(mockData.tokenPrice);
-    setTokensSold(mockData.tokensSold);
-    setTotalTokens(mockData.totalTokens);
-    setEndTime(mockData.endTime);
-    setIsLoading(false);
-
-    // إذا أردت تجربة البيانات الحقيقية لاحقاً، ضع الكود هنا
-  };
-
-  useEffect(() => {
-    fetchContractData();
-  }, []); // [] يعني يعمل مرة واحدة عند التحميل
+  const [tokenPrice, setTokenPrice] = useState(MOCK_DATA.tokenPrice);
+  const [tokensSold, setTokensSold] = useState(MOCK_DATA.tokensSold);
+  const [tokensAvailable, setTokensAvailable] = useState(MOCK_DATA.tokensAvailable);
+  const [endTime, setEndTime] = useState(MOCK_DATA.endTime);
+  const [loading, setLoading] = useState(false);
 
   const refresh = () => {
-    fetchContractData();
+    // لا شيء - البيانات ثابتة
   };
 
   return {
     tokenPrice,
     tokensSold,
-    totalTokens,
+    tokensAvailable,
     endTime,
-    isLoading,
+    loading,
     refresh
   };
 };
+
+// ✅ تأكد من التصدير الافتراضي
+export default useContractData;

@@ -41,21 +41,22 @@ export default function Header() {
             {account ? (
               <div className="flex items-center gap-2">
                 <div className={styles.walletInfo}>
-                  <div className={styles.networkStatus}>
-                    {isCorrectNetwork ? (
-                      <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                        BSC
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1 text-red-500">
-                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                        {t.header.wrongNetwork}
-                      </span>
-                    )}
+                  <div className="flex items-center gap-2">
+                    <div className={styles.networkStatus}>
+                      {isCorrectNetwork ? (
+                        <span className="flex items-center gap-1">
+                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                          BSC
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 text-red-500">
+                          <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                          {t.header.wrongNetwork}
+                        </span>
+                      )}
+                    </div>
+                    <div className={styles.balance}>{parseFloat(balance).toFixed(4)} BNB</div>
                   </div>
-                  <div className={styles.account}>{account.slice(0, 6)}...{account.slice(-4)}</div>
-                  <div className={styles.balance}>{parseFloat(balance).toFixed(4)} BNB</div>
                 </div>
                 <button onClick={disconnect} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
                   {t.header.disconnect}
@@ -92,4 +93,3 @@ export default function Header() {
     </header>
   );
 }
-

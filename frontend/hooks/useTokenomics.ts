@@ -1,84 +1,83 @@
 import { useState, useEffect } from 'react';
-import { formatEther } from 'ethers';
 import { useWeb3 } from '@/contexts/Web3Context';
 
 export interface TokenomicsData {
-  name: string;
-  value: number;
-  color: string;
-  amount?: string;
+  totalSupply: string;
+  presaleAllocation: string;
+  liquidityAllocation: string;
+  marketingAllocation: string;
+  teamAllocation: string;
+  reserveAllocation: string;
 }
 
 export const useTokenomics = () => {
   const { contract } = useWeb3();
-  const [data, setData] = useState<TokenomicsData[]>([
-    { name: 'Presale', value: 40, color: '#5B21B6' },
-    { name: 'Liquidity', value: 30, color: '#FBBF24' },
-    { name: 'Marketing', value: 15, color: '#10B981' },
-    { name: 'Team', value: 10, color: '#EF4444' },
-    { name: 'Reserve', value: 5, color: '#3B82F6' },
-  ]);
-  const [totalSupply, setTotalSupply] = useState('1,000,000,000');
-  const [marketCap, setMarketCap] = useState('$500K');
+  const [tokenomics, setTokenomics] = useState<TokenomicsData>({
+    totalSupply: '0',
+    presaleAllocation: '0',
+    liquidityAllocation: '0',
+    marketingAllocation: '0',
+    teamAllocation: '0',
+    reserveAllocation: '0'
+  });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // ✅ بيانات تجريبية للعرض
+  const mockTokenomics: TokenomicsData = {
+    totalSupply: '1000000000', // 1B tokens
+    presaleAllocation: '400000000', // 40%
+    liquidityAllocation: '300000000', // 30%
+    marketingAllocation: '150000000', // 15%
+    teamAllocation: '100000000', // 10%
+    reserveAllocation: '50000000' // 5%
+  };
 
   const fetchTokenomics = async () => {
-    if (!contract) {
-      setLoading(false);
-      return;
-    }
-
     try {
-      const [
-        total,
-        presale,
-        liquidity,
-        marketing,
-        team,
-        reserve
-      ] = await Promise.all([
-        contract.totalSupply().catch(() => null),
-        contract.presaleAllocation().catch(() => null),
-        contract.liquidityAllocation().catch(() => null),
-        contract.marketingAllocation().catch(() => null),
-        contract.teamAllocation().catch(() => null),
-        contract.reserveAllocation().catch(() => null)
-      ]);
+      setLoading(true);
+      setError(null);
 
-      if (total) {
-        const totalNum = parseFloat(formatEther(total));
-        setTotalSupply(totalNum.toLocaleString(undefined, { maximumFractionDigits: 0 }));
+      // استخدم البيانات التجريبية دائماً (العقد لا يدعم الدوال)
+      setTokenomics(mockTokenomics);
+      
+      // إذا أردت تجربة البيانات الحقيقية لاحقاً، ضع الكود هنا:
+      /*
+      if (contract) {
+        const [
+          totalSupply,
+          presaleAllocation,
+          liquidityAllocation,
+          marketingAllocation,
+          teamAllocation,
+          reserveAllocation
+        ] = await Promise.all([
+          contract.totalSupply?.().catch(() => mockTokenomics.totalSupply),
+          contract.presaleAllocation?.().catch(() => mockTokenomics.presaleAllocation),
+          contract.liquidityAllocation?.().catch(() => mockTokenomics.liquidityAllocation),
+          contract.marketingAllocation?.().catch(() => mockTokenomics.marketingAllocation),
+          contract.teamAllocation?.().catch(() => mockTokenomics.teamAllocation),
+          contract.reserveAllocation?.().catch(() => mockTokenomics.reserveAllocation)
+        ]);
 
-        const allocations = [
-          { value: presale, name: 'Presale', color: '#5B21B6' },
-          { value: liquidity, name: 'Liquidity', color: '#FBBF24' },
-          { value: marketing, name: 'Marketing', color: '#10B981' },
-          { value: team, name: 'Team', color: '#EF4444' },
-          { value: reserve, name: 'Reserve', color: '#3B82F6' },
-        ];
-
-        const newData = allocations.map(item => {
-          if (item.value) {
-            const amount = parseFloat(formatEther(item.value));
-            const percentage = (amount / totalNum) * 100;
-            return {
-              name: item.name,
-              value: parseFloat(percentage.toFixed(2)),
-              color: item.color,
-              amount: amount.toLocaleString(undefined, { maximumFractionDigits: 0 })
-            };
-          }
-          return null;
-        }).filter(Boolean) as TokenomicsData[];
-
-        if (newData.length > 0) {
-          setData(newData);
-        }
+        setTokenomics({
+          totalSupply: totalSupply?.toString() || mockTokenomics.totalSupply,
+          presaleAllocation: presaleAllocation?.toString() || mockTokenomics.presaleAllocation,
+          liquidityAllocation: liquidityAllocation?.toString() || mockTokenomics.liquidityAllocation,
+          marketingAllocation: marketingAllocation?.toString() || mockTokenomics.marketingAllocation,
+          teamAllocation: teamAllocation?.toString() || mockTokenomics.teamAllocation,
+          reserveAllocation: reserveAllocation?.toString() || mockTokenomics.reserveAllocation
+        });
+      } else {
+        setTokenomics(mockTokenomics);
       }
+      */
 
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching tokenomics:', error);
+    } catch (err: any) {
+      console.error('Error fetching tokenomics:', err);
+      setError(err.message || 'Failed to fetch tokenomics');
+      setTokenomics(mockTokenomics); // استخدم البيانات التجريبية في حال الخطأ
+    } finally {
       setLoading(false);
     }
   };
@@ -87,6 +86,25 @@ export const useTokenomics = () => {
     fetchTokenomics();
   }, [contract]);
 
-  return { data, totalSupply, marketCap, loading };
-};
+  // ✅ حساب النسب المئوية
+  const calculatePercentages = () => {
+    const total = parseFloat(tokenomics.totalSupply) || 1;
+    return {
+      presale: (parseFloat(tokenomics.presaleAllocation) / total) * 100,
+      liquidity: (parseFloat(tokenomics.liquidityAllocation) / total) * 100,
+      marketing: (parseFloat(tokenomics.marketingAllocation) / total) * 100,
+      team: (parseFloat(tokenomics.teamAllocation) / total) * 100,
+      reserve: (parseFloat(tokenomics.reserveAllocation) / total) * 100
+    };
+  };
 
+  const percentages = calculatePercentages();
+
+  return {
+    tokenomics,
+    percentages,
+    loading,
+    error,
+    refresh: fetchTokenomics
+  };
+};
