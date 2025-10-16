@@ -1,0 +1,58 @@
+/* Team Component Styles */
+.team {
+  @apply py-20 transition-colors;
+  @apply bg-gray-100 dark:bg-slate-900/50;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.title {
+  @apply text-4xl md:text-5xl font-bold text-center mb-12;
+  @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+}
+
+.teamGrid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16;
+}
+
+.memberCard {
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors text-center hover:border-primary;
+}
+
+.memberAvatar {
+  @apply text-6xl mb-4;
+}
+
+.memberName {
+  @apply text-xl font-bold mb-2;
+}
+
+.memberRole {
+  @apply text-slate-400 text-sm;
+}
+
+.communitySection {
+  @apply text-center;
+}
+
+.communityTitle {
+  @apply text-2xl font-bold mb-6;
+}
+
+.socialGrid {
+  @apply flex justify-center gap-4 flex-wrap;
+}
+
+.socialCard {
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors hover:border-accent min-w-[120px] text-center;
+}
+
+.socialIcon {
+  @apply text-3xl mb-2;
+}
+
+.socialName {
+  @apply font-semibold;
+}

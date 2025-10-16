@@ -1,0 +1,28 @@
+/* NetworkSwitcher Component Styles */
+.networkAlert {
+  @apply fixed top-20 left-1/2 -translate-x-1/2 bg-yellow-900 border border-accent rounded-lg p-4 max-w-md z-50 shadow-lg;
+}
+
+.alertContent {
+  @apply flex items-center gap-3;
+}
+
+.alertIcon {
+  @apply text-2xl;
+}
+
+.alertText {
+  @apply flex-1;
+}
+
+.alertTitle {
+  @apply font-bold text-accent mb-1;
+}
+
+.alertDescription {
+  @apply text-sm text-yellow-200 mb-2;
+}
+
+.switchButton {
+  @apply text-sm bg-accent hover:bg-yellow-500 text-dark px-4 py-2 rounded font-semibold transition-all;
+}

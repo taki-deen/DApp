@@ -1,0 +1,4 @@
+BSC_TESTNET_PRIVATE_KEY=176e687c0d37404fce1e6dba16401d1ae86fee4e77faf5c245047fa3f0f71db1
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_PROJECT_ID
+SEPOLIA_PRIVATE_KEY=0x123abc... (64 hex chars)
+BSC_TESTNET_RPC_URL=https://data-seed-prebsc-1-s1.binance.org:8545/

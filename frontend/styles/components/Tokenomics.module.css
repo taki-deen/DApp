@@ -1,0 +1,101 @@
+/* Tokenomics Component Styles */
+.tokenomics {
+  @apply py-20 bg-white dark:bg-dark transition-colors;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.title {
+  @apply text-4xl md:text-5xl font-bold text-center mb-12;
+  @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+}
+
+.loadingContainer {
+  @apply text-center py-20;
+}
+
+.loadingSpinner {
+  @apply animate-spin rounded-full h-16 w-16 border-b-2 border-accent mx-auto;
+}
+
+.loadingText {
+  @apply mt-4 text-gray-600 dark:text-slate-400;
+}
+
+.contentGrid {
+  @apply grid md:grid-cols-2 gap-8 items-center;
+}
+
+.chartContainer {
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors h-96;
+}
+
+.distributionCard {
+  @apply bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6 transition-colors;
+}
+
+.distributionTitle {
+  @apply text-2xl font-bold mb-6;
+}
+
+.distributionList {
+  @apply space-y-4;
+}
+
+.distributionItem {
+  @apply flex justify-between items-center pb-3 border-b border-slate-700;
+}
+
+.distributionInfo {
+  @apply flex items-center gap-3;
+}
+
+.distributionColor {
+  @apply w-4 h-4 rounded;
+}
+
+.distributionName {
+  @apply font-semibold;
+}
+
+.distributionValues {
+  @apply text-right rtl:text-left;
+}
+
+.distributionPercentage {
+  @apply text-slate-300 font-bold;
+}
+
+.distributionAmount {
+  @apply text-xs text-slate-500;
+}
+
+.statsContainer {
+  @apply mt-6 pt-6 border-t border-slate-700;
+}
+
+.statsGrid {
+  @apply grid grid-cols-2 gap-4 text-sm;
+}
+
+.statItem {
+  @apply space-y-1;
+}
+
+.statLabel {
+  @apply text-slate-400;
+}
+
+.statValue {
+  @apply font-bold text-lg;
+}
+
+.liveIndicator {
+  @apply mt-4 text-xs text-slate-500 flex items-center gap-2;
+}
+
+.liveDot {
+  @apply w-2 h-2 bg-green-500 rounded-full animate-pulse;
+}

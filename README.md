@@ -1,174 +1,117 @@
-# Crypto Presale Landing Page 🚀
+# Crypto Presale DApp
 
-Modern React/Next.js presale landing page for BSC tokens with Web3 integration and multi-language support.
+A decentralized application for crypto token presale with separate frontend and smart contract components.
 
-## 🚀 Quick Start
+## Project Structure
 
-**For detailed setup instructions, see:**
-- 📖 **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Complete setup guide for all platforms
-- ⚡ **[QUICK_START.md](./QUICK_START.md)** - Get running in 5 minutes
-- 🌍 **[GUIDE_AR.md](./GUIDE_AR.md)** - Arabic guide
+```
+DApp/
+├── frontend/           # Next.js frontend application
+│   ├── components/     # React components
+│   ├── contexts/       # React contexts
+│   ├── hooks/          # Custom hooks
+│   ├── lib/            # Utilities and configurations
+│   ├── pages/          # Next.js pages
+│   ├── styles/         # CSS modules
+│   └── public/         # Static assets
+├── smart-contracts/    # Hardhat smart contracts
+│   ├── contracts/      # Solidity contracts
+│   ├── scripts/        # Deployment scripts
+│   └── test/           # Contract tests
+├── .env.local          # Environment variables
+├── package.json        # Root package.json with scripts
+└── README.md           # This file
+```
 
-## Features ✨
+## Quick Start
 
-- 🌐 **Dual Language Support** (English/Arabic with RTL)
-- 🌓 **Dark/Light Theme** with smooth transitions
-- 🔗 **Web3 Wallet Integration** (MetaMask, WalletConnect)
-- 📊 **Live Contract Data** (price, tokens sold, countdown)
-- 💰 **Secure Buy Flow** with real-time validation
-- 📱 **Mobile-First Responsive Design**
-- ⚡ **Fast Performance** with Next.js
-- 🎨 **Modern UI** with Tailwind CSS
-- 🎯 **Modular Architecture** with CSS modules
+### Frontend Development
 
-## 🚀 Quick Setup
-
+1. Navigate to frontend directory:
 ```bash
-# 1. Clone repository
-git clone https://github.com/taki-deen/DApp.git
-cd DApp
+cd frontend
+```
 
-# 2. Install dependencies
+2. Install dependencies:
+```bash
 npm install
+```
 
-# 3. Create environment file
-echo "NEXT_PUBLIC_PRESALE_CONTRACT_ADDRESS=0x1234567890123456789012345678901234567890" > .env.local
-echo "NEXT_PUBLIC_NETWORK=bsc-testnet" >> .env.local
-echo "NEXT_PUBLIC_RPC_URL=https://data-seed-prebsc-1-s1.binance.org:8545/" >> .env.local
-echo "NEXT_PUBLIC_CHAIN_ID=97" >> .env.local
+3. Copy environment file:
+```bash
+cp .env.example .env.local
+```
 
-# 4. Start development server
+4. Update contract address in `.env.local`
+
+5. Run development server:
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+### Smart Contract Development
 
-**📖 For detailed setup instructions on different platforms, see [SETUP_GUIDE.md](./SETUP_GUIDE.md)**
-
-## Language System 🌍
-
-The app supports **English** and **Arabic** with full RTL support.
-
-### How It Works
-
-- Language switcher in header
-- Auto-saves preference to localStorage
-- Automatic RTL layout for Arabic
-- All text from `lib/translations.ts`
-
-### Add New Translations
-
-Edit `lib/translations.ts`:
-
-```typescript
-export const translations = {
-  en: {
-    newSection: {
-      title: 'New Title',
-      description: 'Description'
-    }
-  },
-  ar: {
-    newSection: {
-      title: 'عنوان جديد',
-      description: 'الوصف'
-    }
-  }
-};
-```
-
-Use in components:
-
-```tsx
-import { useLanguage } from '@/contexts/LanguageContext';
-
-export default function MyComponent() {
-  const { t } = useLanguage();
-  return <h1>{t.newSection.title}</h1>;
-}
-```
-
-## Smart Contract Requirements 📋
-
-Your contract must implement:
-
-```solidity
-function buyTokens() external payable
-function tokenPrice() external view returns (uint256)
-function tokensSold() external view returns (uint256)
-function tokensAvailable() external view returns (uint256)
-function endTime() external view returns (uint256)
-
-// For tokenomics (optional but recommended)
-function totalSupply() external view returns (uint256)
-function presaleAllocation() external view returns (uint256)
-function liquidityAllocation() external view returns (uint256)
-function marketingAllocation() external view returns (uint256)
-function teamAllocation() external view returns (uint256)
-function reserveAllocation() external view returns (uint256)
-```
-
-Sample contract available in `contracts/PresaleSample.sol`
-
-## Project Structure 📁
-
-```
-├── components/           # React components
-│   ├── Header.tsx       # Navigation + wallet
-│   ├── Hero.tsx         # Main banner + stats
-│   ├── About.tsx        # Project info
-│   ├── Tokenomics.tsx   # Distribution chart
-│   ├── PresalePanel.tsx # Buy interface
-│   ├── Roadmap.tsx      # Timeline
-│   ├── Team.tsx         # Team + socials
-│   └── Footer.tsx       # Footer
-├── contexts/            # React contexts
-│   ├── Web3Context.tsx  # Wallet management
-│   └── LanguageContext.tsx # i18n
-├── hooks/               # Custom hooks
-│   ├── useContractData.ts # Contract polling
-│   └── useTokenomics.ts   # Tokenomics data
-├── lib/                 # Utilities
-│   ├── contract.ts      # ABI + config
-│   └── translations.ts  # Language files
-└── pages/               # Next.js pages
-    ├── _app.tsx         # App wrapper
-    └── index.tsx        # Home page
-```
-
-## Testing on BSC Testnet 🧪
-
-1. Switch MetaMask to BSC Testnet
-2. Get free BNB from [faucet](https://testnet.bnbchain.org/faucet-smart)
-3. Deploy your contract or use sample
-4. Update `.env.local` with contract address
-5. Test the buy flow
-
-## Production Build 🚀
-
+1. Navigate to smart-contracts directory:
 ```bash
-npm run build
-npm start
+cd smart-contracts
 ```
 
-## Customization 🎨
-
-### Colors
-
-Edit `tailwind.config.js`:
-
-```js
-colors: {
-  primary: '#5B21B6',  // Purple
-  accent: '#FBBF24',   // Gold
-  dark: '#0F172A',     // Navy
-}
+2. Install dependencies:
+```bash
+npm install
 ```
 
-### Tokenomics
+3. Compile contracts:
+```bash
+npm run compile
+```
 
-If your contract doesn't have tokenomics functions, edit `hooks/useTokenomics.ts` to use static values.
+4. Run tests:
+```bash
+npm run test
+```
 
-## Support 💬
+5. Deploy to BSC Testnet:
+```bash
+npm run deploy:testnet
+```
 
-For issues or questions, check the code comments or contract sample.
+## Features
+
+### Frontend
+- Modern React/Next.js application
+- Web3 wallet integration
+- Multi-language support (Arabic/English)
+- Dark/Light theme
+- Responsive design
+- BSC Testnet integration
+
+### Smart Contracts
+- Token presale functionality
+- BNB payment integration
+- Owner withdrawal capabilities
+- Tokenomics allocation tracking
+- Time-based presale ending
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Web3**: Ethers.js, Web3Modal
+- **Smart Contracts**: Solidity, Hardhat
+- **Blockchain**: BSC (Binance Smart Chain)
+
+## Development Workflow
+
+1. Develop smart contracts in `smart-contracts/`
+2. Deploy contracts and get contract address
+3. Update frontend `.env.local` with contract address
+4. Develop frontend in `frontend/`
+5. Test integration between frontend and contracts
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Make changes in appropriate directory
+4. Test thoroughly
+5. Submit pull request

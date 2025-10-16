@@ -1,0 +1,13 @@
+/* Import all component styles */
+@import './Header.module.css';
+@import './Hero.module.css';
+@import './About.module.css';
+@import './Tokenomics.module.css';
+@import './PresalePanel.module.css';
+@import './Roadmap.module.css';
+@import './Team.module.css';
+@import './Footer.module.css';
+@import './WalletStatus.module.css';
+@import './NetworkSwitcher.module.css';
+@import './LanguageSwitcher.module.css';
+@import './ThemeSwitcher.module.css';

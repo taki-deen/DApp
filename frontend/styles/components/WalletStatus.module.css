@@ -1,0 +1,28 @@
+/* WalletStatus Component Styles */
+.walletAlert {
+  @apply fixed bottom-4 right-4 rtl:right-auto rtl:left-4 bg-red-900 border border-red-500 rounded-lg p-4 max-w-sm z-50;
+}
+
+.alertContent {
+  @apply flex items-start gap-3;
+}
+
+.alertIcon {
+  @apply text-2xl;
+}
+
+.alertText {
+  @apply flex-1;
+}
+
+.alertTitle {
+  @apply font-bold mb-1 text-red-300;
+}
+
+.alertDescription {
+  @apply text-sm text-red-200 mb-2;
+}
+
+.downloadButton {
+  @apply text-xs bg-red-700 hover:bg-red-600 px-3 py-1 rounded inline-block;
+}
