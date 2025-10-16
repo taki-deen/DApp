@@ -4,15 +4,24 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
+  // ✅ السطر المصحح - مع الأقواس
   const { tokenPrice, tokensSold, tokensAvailable, endTime, loading } = useContractData();
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isClient, setIsClient] = useState(false);
   const network = getNetwork();
 
+  // ✅ منع hydration errors
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const timer = setInterval(() => {
       const now = Math.floor(Date.now() / 1000);
-      const remaining = endTime - now;
+      const remaining = parseInt(endTime || '0') - now;
       
       if (remaining > 0) {
         setTimeLeft({
@@ -23,23 +32,43 @@ export default function Hero() {
         });
       }
     }, 1000);
-    const displayPrice = tokenPrice && !isNaN(parseFloat(tokenPrice)) 
-  ? parseFloat(tokenPrice).toFixed(6) 
-  : "0.0000";
-
-const displaySold = tokensSold && !isNaN(parseFloat(tokensSold)) 
-  ? parseInt(tokensSold).toLocaleString() 
-  : "0";
 
     return () => clearInterval(timer);
-  }, [endTime]);
+  }, [endTime, isClient]);
 
-  const totalTokens = parseFloat(tokensSold) + parseFloat(tokensAvailable);
-  const progress = totalTokens > 0 ? (parseFloat(tokensSold) / totalTokens) * 100 : 0;
+  // ✅ حساب القيم بشكل آمن
+  const safeValues = {
+    price: isClient && tokenPrice && !isNaN(parseFloat(tokenPrice)) 
+      ? parseFloat(tokenPrice).toFixed(8) 
+      : '0.00000000',
+    
+    sold: isClient && tokensSold && !isNaN(parseFloat(tokensSold)) 
+      ? parseFloat(tokensSold).toLocaleString() 
+      : '0',
+    
+    available: isClient && tokensAvailable && !isNaN(parseFloat(tokensAvailable)) 
+      ? parseFloat(tokensAvailable).toLocaleString() 
+      : '0'
+  };
+
+  // ✅ حساب التقدم بشكل آمن
+  const totalTokens = parseFloat(tokensSold || '0') + parseFloat(tokensAvailable || '0');
+  const progress = totalTokens > 0 ? (parseFloat(tokensSold || '0') / totalTokens) * 100 : 0;
 
   const scrollToPresale = () => {
     document.getElementById('presale')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // ✅ عرض loading أثناء التحميل الأولي
+  if (!isClient) {
+    return (
+      <section id="home" className="pt-24 pb-16 min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white dark:from-dark dark:to-slate-900 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <div className="text-2xl">Loading...</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="home" className="pt-24 pb-16 min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white dark:from-dark dark:to-slate-900 transition-colors">
@@ -78,21 +107,21 @@ const displaySold = tokensSold && !isNaN(parseFloat(tokensSold))
           <div className="card text-center">
             <div className="text-sm text-slate-400 mb-2">{t.hero.tokenPrice}</div>
             <div className="text-2xl font-bold text-primary">
-              {loading ? '...' : `${parseFloat(tokenPrice).toFixed(8)} BNB`}
+              {loading ? '...' : `${safeValues.price} BNB`}
             </div>
           </div>
 
           <div className="card text-center">
             <div className="text-sm text-slate-400 mb-2">{t.hero.tokensSold}</div>
             <div className="text-2xl font-bold text-green-400">
-              {loading ? '...' : parseFloat(tokensSold).toLocaleString()}
+              {loading ? '...' : safeValues.sold}
             </div>
           </div>
 
           <div className="card text-center">
             <div className="text-sm text-slate-400 mb-2">{t.hero.tokensRemaining}</div>
             <div className="text-2xl font-bold text-blue-400">
-              {loading ? '...' : parseFloat(tokensAvailable).toLocaleString()}
+              {loading ? '...' : safeValues.available}
             </div>
           </div>
         </div>
@@ -113,4 +142,3 @@ const displaySold = tokensSold && !isNaN(parseFloat(tokensSold))
     </section>
   );
 }
-
